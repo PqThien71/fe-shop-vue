@@ -33,6 +33,7 @@
 
 <script>
 import axios from 'axios'
+import { toast } from 'bulma-toast'
 export default{
     name: 'Product',
     data(){
@@ -59,6 +60,26 @@ export default{
                 console.log(error)
             })
         },
+        addToCart(){
+            if (isNaN(this.quantity) || this.quantity < 1){
+                this.quantity = 1
+            }
+            const item = {
+                product: this.product,
+                quantity: this.quantity
+            }
+            this.$store.commit('addToCart', item)
+
+            toast({
+                message: `${this.product.name} added to cart`,
+                type: 'is-success',
+                position: 'bottom-right',
+                dismissible: true,
+                pauseOnHover: true,
+                duration: 3000,
+                animate: { in: 'fadeIn', out: 'fadeOut' }
+            })
+        }
         }
     }
 

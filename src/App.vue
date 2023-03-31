@@ -31,8 +31,8 @@
         </div>
 
         <div class="navbar-end">
-          <router-link to="/summer" class="navbar-item">Summer</router-link>
-          <router-link to="/winter" class="navbar-item">Winter</router-link>
+          <router-link to="/CPU" class="navbar-item">CPU</router-link>
+          <router-link to="/VGA" class="navbar-item">VGA</router-link>
 
           <div class="navbar-item">
             <div class="buttons">
@@ -40,11 +40,10 @@
                 <router-link to="/my-account" class="button is-light">My account</router-link>
               </template> -->
 
-              <template>
                 <router-link to="/log-in" class="button is-light">Log in</router-link>
-              </template>
+                <router-link to="/Sign-up" class="button is-light">SignUp</router-link>
 
-              <router-link to="/cart" class="button is-success">
+                <router-link to="/cart" class="button is-success">
                 <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                 <span>Cart </span>
               </router-link>
