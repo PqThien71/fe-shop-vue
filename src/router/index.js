@@ -71,7 +71,7 @@ const routes = [
   }
 },
 {
-  path: '/success',
+  path: '/cart/success',
   name: 'success',
   component: success,
 },

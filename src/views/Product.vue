@@ -14,7 +14,7 @@
             <div class="column is-3">
                 <h2 class="subtitle">Information</h2>
 
-                <p><strong>Price: </strong>{{ product.price }} Tr</p>
+                <p><strong>Price: </strong>${{ product.price }}</p>
 
                 <div class="field has-addons mt-6">
                     <div class="control">
@@ -30,36 +30,34 @@
     </div>
 </template>
 
-
 <script>
-import axios from 'axios'
 import { toast } from 'bulma-toast'
+import axios from 'axios'
 export default{
     name: 'Product',
     data(){
         return{
-            product: {},
-            quantity: 1,
+            product:{},
+            quantity:1,
         }
     },
     mounted(){
         this.getProduct()
     },
-    methods:{
-        getProduct(){
-            const product = this.$route.params.product_slug
+    methods: {
+        async getProduct(){
+            this.$store.commit('setIsLoading', true)
             const category_slug = this.$route.params.category_slug
-            console.log(category_slug)
-            axios
-            .get(`/api/v1/products/${category_slug}/${product}/`)
+            const product_slug = this.$route.params.product_slug
+            await axios
+            .get(`/api/v1/products/${category_slug}/${product_slug}/`)
             .then(response => {
                 this.product = response.data
-                console.log(this.product)
+                document.title = this.product.name + ' - Djacket'
             })
-            .catch(error => {
-                console.log(error)
-            })
+            this.$store.commit('setIsLoading', false)
         },
+
         addToCart(){
             if (isNaN(this.quantity) || this.quantity < 1){
                 this.quantity = 1
@@ -80,7 +78,6 @@ export default{
                 animate: { in: 'fadeIn', out: 'fadeOut' }
             })
         }
-        }
     }
-
+}
 </script>
