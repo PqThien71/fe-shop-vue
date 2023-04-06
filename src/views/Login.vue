@@ -39,6 +39,9 @@ export default{
             errors: '',
         }
     },
+    mounted(){
+        document.title = 'Login - PC shop'
+    },
     methods:{
         submitForm(){
             axios.defaults.headers.common['Authorization'] = ""

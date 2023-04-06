@@ -50,12 +50,13 @@ export default
     methods:{
         getCategory(){
             const categorySlug = this.$route.params.category_slug
+            document.title = categorySlug + ' - PC shop'
             axios
             .get(`/api/v1/products/${categorySlug}/`)
             .then(response => {
                 this.category = response.data
-                console.log(this.category)
-            })  
+            }) 
+            document.title = category.name+ ' - PC shop'
         },
     }
 }

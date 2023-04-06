@@ -35,6 +35,7 @@ export default{
     },
     mounted(){
         this.getMyOrders()
+        document.title = 'My account | PC shop'
     },
     data(){
         return{
